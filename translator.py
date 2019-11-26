@@ -36,7 +36,7 @@ class VarTranslator:
         else:
             return False
 
-    def _cache_save(self, kor_word, eng_word):
+    def _cache_set(self, kor_word, eng_word):
         conn = self._connection()
 
         return conn.set(kor_word, eng_word)
@@ -59,7 +59,7 @@ class VarTranslator:
         else:
             cleaning_word = self._cleaning_word(trans_word.text)
             try:
-                self._cache_save(word, cleaning_word)
+                self._cache_set(word, cleaning_word)
             except Exception:
                 pass
 
